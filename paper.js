@@ -1,5 +1,5 @@
 class Paper{
-    constructor(x, y, width, height) {
+    constructor(x, y, width, radius) {
     
     var opitions = {
         isStatic:false,
@@ -13,4 +13,4 @@ class Paper{
     this.radius = radius;
 
     }
-}
+};

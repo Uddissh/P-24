@@ -10,15 +10,18 @@ function preload()
 }
 
 function setup() {
-	createCanvas(800, 700);
-
-	go = new ground(780, 350, 500, 20, {isStatic:true});
+	createCanvas(1500, 700);
 
 	engine = Engine.create();
 	world = engine.world;
 
 	//Create the Bodies Here.
 
+	go = new ground(750, 680, 1500, 20, {isStatic:true});
+	log1 = new Dustbin(1130, 600, 20, 180);
+	log2 = new Dustbin(1330, 600, 20, 180);
+	log3 = new Dustbin(1230, 680, 200, 20);
+	paper = new Paper(100, 100, 20, 10);
 
 	Engine.run(engine);
   
@@ -30,12 +33,19 @@ function draw() {
   background(0);
 
   if(keyCode === UP_ARROW) {
-	  Matter.body.applyForce(paperObject.body, paperObject.body.position, {x : 85, y : -85})
+	  up();
   }
   
   go.display();
- 
+  log1.display();
+  log2.display();
+  log3.display();
+  paper.display();
+
 }
 
-
-
+function up() {
+	if(keyCode === UP_ARROW) {
+		Matter.body.applyForce(paper.body, paper.body.position, {x : 85, y : 85})
+	}
+}
