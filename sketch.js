@@ -1,8 +1,10 @@
-
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
+var go;
+var log1, log2, log3;
+var paper;
 
 function preload()
 {
@@ -18,10 +20,10 @@ function setup() {
 	//Create the Bodies Here.
 
 	go = new ground(750, 680, 1500, 20, {isStatic:true});
-	log1 = new Dustbin(1130, 600, 20, 180);
-	log2 = new Dustbin(1330, 600, 20, 180);
+	log1 = new Dustbin(1130, 640, 20, 100);
+	log2 = new Dustbin(1330, 640, 20, 100);
 	log3 = new Dustbin(1230, 680, 200, 20);
-	paper = new Paper(100, 100, 20, 10);
+	paper = new Paper(100, 200, 50);
 
 	Engine.run(engine);
   
@@ -32,9 +34,6 @@ function draw() {
   rectMode(CENTER);
   background(0);
 
-  if(keyCode === UP_ARROW) {
-	  up();
-  }
   
   go.display();
   log1.display();
@@ -44,8 +43,8 @@ function draw() {
 
 }
 
-function up() {
+function keyPressed() {
 	if(keyCode === UP_ARROW) {
-		Matter.body.applyForce(paper.body, paper.body.position, {x : 85, y : 85})
+		Matter.Body.applyForce(paper.body, paper.body.position, {x : 120, y : -135}) 
 	}
 }
